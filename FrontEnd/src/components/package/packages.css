@@ -1,0 +1,47 @@
+.packages-page {
+  direction: rtl;
+  text-align: center;
+  background-color: #ddd;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.packages-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.package-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 280px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.package-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.options {
+  text-align: right;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 15px;
+  background-color: #6b72f0;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5058e3;
+}
