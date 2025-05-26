@@ -3,6 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 
 function Header() {
+  const links = [
+    { name: "Home", path: "/main" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+    { name: "Packages", path: "/packages" },
+  ];
+
   return (
     <header>
       <div className="container">
@@ -10,63 +17,24 @@ function Header() {
           <div className="logo">
             <Link to="/">
               <img src={logo} alt="logo" />
-              <span className="slogan">Test project</span>
+              <span className="slogan">iDo </span>
             </Link>
           </div>
           <nav>
             <ul className="menu">
-              <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? "menu-item active" : "menu-item"
-                  }
-                  end
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/about"
-                  className={({ isActive }) =>
-                    isActive ? "menu-item active" : "menu-item"
-                  }
-                >
-                  About
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    isActive ? "menu-item active" : "menu-item"
-                  }
-                >
-                  Contact
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? "menu-item active" : "menu-item"
-                  }
-                  end
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/packages"
-                  className={({ isActive }) =>
-                    isActive ? "menu-item active" : "menu-item"
-                  }
-                >
-                  Packages
-                </NavLink>
-              </li>
+              {links.map((link) => (
+                <li key={link.path}>
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      isActive ? "menu-item active" : "menu-item"
+                    }
+                    end={link.path === "/main"} // apply 'end' only on Home
+                  >
+                    {link.name}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
