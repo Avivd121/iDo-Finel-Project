@@ -6,6 +6,12 @@ const port = 8801;
 
 app.use(express.json());
 
+// handle images for upload and download
+const imagesHandler = require("./routes/imagesHandler");
+app.use("/images", imagesHandler);
+
+
+
 app.use("/user", userRoutes);
 app.use((err, req, res, next) => {
   console.error(err); // Log error

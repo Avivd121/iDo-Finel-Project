@@ -102,7 +102,7 @@ export default function Login() {
       )
       .then(({ ok, data }) => {
         if (ok) {
-          alert("User logged in successfully!"); // ✅ success message
+          alert("User logged in successfully!"); // success message
           navigate("/main");
         } else {
           setError(data.message || "Invalid email or password");

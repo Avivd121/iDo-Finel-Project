@@ -113,6 +113,9 @@
 //   );
 // }
 
+//////////////////////////////////////////////
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
@@ -138,6 +141,37 @@ export default function Register() {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (formData.password !== confirmPassword) {
+  //     alert("Passwords do not match!");
+  //     return;
+  //   }
+
+  //   const response = await fetch("/user/register", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(formData),
+  //   });
+
+  //   if (response.ok) {
+  //     alert("המשתמש נוצר בהצלחה!"); // user created successfully in Hebrew
+  //     setFormData({
+  //       full_name: "",
+  //       email: "",
+  //       phone: "",
+  //       password: "",
+  //       role: "Viewer",
+  //     });
+  //     setConfirmPassword("");
+
+  //     navigate("/"); // move to home page after registration
+  //   } else {
+  //     alert("Registration failed.");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -146,14 +180,22 @@ export default function Register() {
       return;
     }
 
+    const passwordRegex = /^(?=.*\d)(?=.*[^\w\s]).{8,}$/;
+    if (!passwordRegex.test(formData.password)) {
+      alert(
+        "Password must be at least 8 characters long, contain at least one number, and one symbol."
+      );
+      return;
+    }
+
     const response = await fetch("/user/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
-
+//הבנה כבר מוכן לכן אולי מיותר
     if (response.ok) {
-      alert("המשתמש נוצר בהצלחה!"); // user created successfully in Hebrew
+      alert("User created successfully");
       setFormData({
         full_name: "",
         email: "",
@@ -162,8 +204,7 @@ export default function Register() {
         role: "Viewer",
       });
       setConfirmPassword("");
-
-      navigate("/"); // move to home page after registration
+      navigate("/");
     } else {
       alert("Registration failed.");
     }

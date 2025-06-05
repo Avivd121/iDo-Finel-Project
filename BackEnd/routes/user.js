@@ -165,13 +165,14 @@ router.post("/login", (req, res) => {
 // POST register - add new user with encrypted password
 router.post("/register", (req, res) => {
   const { full_name, email, phone, password } = req.body;
-  const role = "Viewer"; // by default, set role to Viewer
+  const role = "Customer"; // by default, set role to Viewer
 
   // Basic validation
   if (!full_name || !email || !phone || !password) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
+  // need to understand 'emailRegex' function
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ message: "Invalid email format" });
@@ -225,6 +226,8 @@ router.post("/register", (req, res) => {
   );
 });
 
+
+// DELETE user by ID , might be deleted
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
   const query = "DELETE FROM users WHERE User_ID = ?";

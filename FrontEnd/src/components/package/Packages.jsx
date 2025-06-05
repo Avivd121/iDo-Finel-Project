@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const packages = [
   {
     id: 1,
-    image: "/img1.jpg",
+    image: "./img1.jpg",
     options: ["צלם", "זיקוקים", "זרי פרחים", "שטיח", "פינת לחיים", "נורות לד","מערכת הגברה"],
   },
   {
